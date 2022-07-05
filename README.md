@@ -11,4 +11,4 @@ This repository is just about the vuemastery's courses
 
 > L4 - Conditional Rendering tags with v-if, v-else and v-show
 
-# L5 Starting NOW
+> L5 - Loops and List Rendering with v-for directive and the key attribute for identidy and indexing
