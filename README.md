@@ -1,5 +1,8 @@
-# intro_to_vue
-This repository is just about the vuemastery's courses
+# Intro to Vue 3 Lessons
+
+This repository are Lessons about the vuemastery's course called "Intro to Vue 3". 
+
+# Lessons
 
 > L1 - Introduction about vue.js
 
@@ -12,3 +15,5 @@ This repository is just about the vuemastery's courses
 > L4 - Conditional Rendering tags with v-if, v-else and v-show
 
 > L5 - Loops and List Rendering with v-for directive and the key attribute for identidy and indexing
+
+>> L6 - In Progress
