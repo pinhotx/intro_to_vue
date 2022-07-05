@@ -6,7 +6,9 @@ const app = Vue.createApp({
             image: './assets/images/socks_green.jpg',
             url: 'https://www.twitch.tv/pinhotx',
             inventory: 8,
-            onSale: true
+            onSale: true,
+            details: ['50% cotton', '30% wool', '20% polyester']
+
         }
     }
 })
