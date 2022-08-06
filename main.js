@@ -18,23 +18,26 @@ const app = Vue.createApp({
         }
     },
     methods:{
-           addToCart(){
+        addToCart(){
                 this.cart += 1
-           }, 
-           removeFromCart(){
-                if(this.cart > 0){
-                    this.cart -= 1
-                }
+        }, 
+        removeFromCart(){
+            if(this.cart > 0){
+                this.cart -= 1
+            }
            },
-           cartIsFilled(){
-                if(this.cart > 0){
-                    return true
-                }else{
-                    return false
-                }
-           },
-           updateImage(variantImage) {
+        cartIsFilled(){
+            if(this.cart > 0){
+                return true
+            }else{
+                return false
+            }
+        },
+        updateImage(variantImage) {
             this.image = variantImage
-           }
+        },
+        isInStock(){
+            return this.inventory > 0 ? true : false
+        }
     }
 })

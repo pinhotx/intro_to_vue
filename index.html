@@ -17,7 +17,7 @@
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
-            <img :src="image" alt="">
+            <img :class="[!isInStock() ?'out-of-stock-img' : '']" :src="image" alt="">
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
@@ -28,20 +28,38 @@
             <p v-else>Out of Stock</p>
             
             <ul>
-              <li v-for="detail in details">{{ detail }}</li>
+              <li v-for="detail in details">
+                {{ detail }}
+              </li>
             </ul>
 
             <ul>
-              <li v-for="(size, index) in sizes" :key="index">{{ size }}</li>
+              <li v-for="(size, index) in sizes" 
+                :key="index">
+                  {{ size }}
+              </li>
             </ul>
 
-            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
-            <button class="button" @click="addToCart">Add to Cart</button>
-            <button class="button" @click="removeFromCart" v-if="cartIsFilled()">Remove from Cart</button>
+            <div class="color-circle" 
+              v-for="variant in variants" 
+              :key="variant.id" 
+              :style="{ backgroundColor: variant.color }"
+              @mouseover="updateImage(variant.image)">
+            </div>
 
+            <button class="button" 
+              :class="{disabledButton: !isInStock()}"
+              :disabled="!isInStock() || cart == inventory"
+              @click="addToCart">
+                {{ isInStock() ? "Add to Cart" : "Out of Stock" }}
+              </button>
 
+            <button class="button" 
+              @click="removeFromCart" 
+              v-if="cartIsFilled()">
+                Remove from Cart
+              </button>
            
-<!-- Entendi!!!! --> 
             <a :href="url">Made by Pinho Santiago</a>
 
           </div>
