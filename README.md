@@ -16,4 +16,4 @@ This repository are Lessons about the vuemastery's course called "Intro to Vue 3
 
 > L5 - Loops and List Rendering with v-for directive and the key attribute for identidy and indexing
 
->> L6 - In Progress
+> L6 - v-on directive for handle with events
