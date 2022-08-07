@@ -23,3 +23,5 @@ This repository are Lessons about the vuemastery's course called "Intro to Vue 3
 > L8 - Computed Properties
 
 > L9 - Components and props 
+
+> L10 - In Progress
