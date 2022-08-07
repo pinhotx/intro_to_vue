@@ -19,3 +19,5 @@ This repository are Lessons about the vuemastery's course called "Intro to Vue 3
 > L6 - v-on directive for handle with events
 
 > L7 - style binding, class binding, ternary operators
+
+> L8 - In Progress
