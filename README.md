@@ -18,10 +18,10 @@ This repository are Lessons about the vuemastery's course called "Intro to Vue 3
 
 > L6 - v-on directive for handle with events
 
-> L7 - style binding, class binding, ternary operators
+> L7 - style binding, class binding, ternary operators v-bind
 
 > L8 - Computed Properties
 
 > L9 - Components and props 
 
-> L10 - In Progress
+> L10 - Communicating with Events (emit)

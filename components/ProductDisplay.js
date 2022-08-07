@@ -3,6 +3,10 @@ app.component('product-display', {
     premium: {
       type: Boolean,
       required: true
+    },
+    cartIsFilled: {
+      type: Boolean,
+      required: false
     }
   },
   template:
@@ -45,8 +49,7 @@ app.component('product-display', {
           </button>
 
         <button class="button" 
-          @click="removeFromCart" 
-          v-if="cartIsFilled">
+          @click="removeFromCart">
             Remove from Cart
           </button>
       
@@ -79,10 +82,9 @@ app.component('product-display', {
       this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
     }, 
     removeFromCart(){
-        if(this.cart > 0){
-            this.cart -= 1
-        }
+        this.$emit('remove-from-cart')
       },
+
     updateVariant(index) {
         this.selectedVariant = index        
     },
@@ -111,9 +113,6 @@ app.component('product-display', {
                 this.variants[this.selectedVariant].quantity > 0
     },
 
-    cartIsFilled(){
-        return this.cart > 0 ? true : false
-    },
     saleMsg(){
         return this.onSale ? this.brand + ' ' + this.product + ' is on sale'
         :''
