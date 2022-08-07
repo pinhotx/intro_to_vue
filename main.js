@@ -7,12 +7,11 @@ const app = Vue.createApp({
             selectedVariant: 0,
             description: 'A warm fuzzy pair of socks.',
             url: 'https://www.github.com/tiagopinhotx',
-            inventory: 8,
             onSale: true,
             details: ['50% cotton', '30% wool', '20% polyester'],
             variants: [
                 { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
-                { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0 },
+                { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 2 },
               ],
             sizes: ['P', 'M', 'G', 'GG']
 
@@ -41,9 +40,20 @@ const app = Vue.createApp({
         title() {
             return this.brand + ' ' + this.product
         },
+        
+        inventory(){
+            return this.variants.reduce((a, b) => a + b.quantity, 0)
+        },
+
         inStock(){
             return this.variants[this.selectedVariant].quantity
         },
+        
+        almostSoldOut(){
+            return this.variants[this.selectedVariant].quantity <= 10 && 
+                    this.variants[this.selectedVariant].quantity > 0
+        },
+
         cartIsFilled(){
             return this.cart > 0 ? true : false
         },
@@ -51,6 +61,7 @@ const app = Vue.createApp({
             return this.onSale ? this.brand + ' ' + this.product + ' is on sale'
             :''
         }
+        
         
     }
 })

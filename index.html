@@ -23,9 +23,10 @@
             <h1>{{ title }}</h1>
             <p> {{ description }} </p>
             <b><p v-if="onSale">{{saleMsg}}</p></b>
-            <p v-if="inventory > 10">In Stock</p>
-            <p v-if="inventory <= 10 && inventory > 0">Almost Sold Out</p>
-            <p v-else>Out of Stock</p>
+            <p v-if="inStock > 10">In Stock </p>
+            <p v-if="almostSoldOut">Almost Sold Out, 
+              only {{ variants[selectedVariant].quantity }} left</p>
+            <p v-if="!inStock">Out of Stock</p>
             
             <ul>
               <li v-for="detail in details">
