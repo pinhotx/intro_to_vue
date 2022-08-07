@@ -20,9 +20,9 @@
             <img :class="[!isInStock() ?'out-of-stock-img' : '']" :src="image" alt="">
           </div>
           <div class="product-info">
-            <h1>{{ product }}</h1>
+            <h1>{{ title }}</h1>
             <p> {{ description }} </p>
-            <b><p v-if="onSale">On Sale</p></b>
+            <b><p v-if="onSale">{{saleMsg}}</p></b>
             <p v-if="inventory > 10">In Stock</p>
             <p v-if="inventory <= 10 && inventory > 0">Almost Sold Out</p>
             <p v-else>Out of Stock</p>
@@ -41,22 +41,22 @@
             </ul>
 
             <div class="color-circle" 
-              v-for="variant in variants" 
+              v-for="(variant, index) in variants" 
               :key="variant.id" 
               :style="{ backgroundColor: variant.color }"
-              @mouseover="updateImage(variant.image)">
+              @mouseover="updateVariant(index)">
             </div>
 
             <button class="button" 
-              :class="{disabledButton: !isInStock()}"
-              :disabled="!isInStock() || cart == inventory"
+              :class="{disabledButton: !inStock}"
+              :disabled="!inStock"
               @click="addToCart">
-                {{ isInStock() ? "Add to Cart" : "Out of Stock" }}
+                {{ inStock ? "Add to Cart" : "Out of Stock" }}
               </button>
 
             <button class="button" 
               @click="removeFromCart" 
-              v-if="cartIsFilled()">
+              v-if="cartIsFilled">
                 Remove from Cart
               </button>
            

@@ -20,4 +20,4 @@ This repository are Lessons about the vuemastery's course called "Intro to Vue 3
 
 > L7 - style binding, class binding, ternary operators
 
-> L8 - In Progress
+> L8 - Computed Properties
