@@ -13,64 +13,21 @@
       <div class="nav-bar"></div>
 
       <div class="cart">Cart({{ cart }})</div>
+      <product-display :premium="premium"></product-display>
 
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <img :class="[!isInStock() ?'out-of-stock-img' : '']" :src="image" alt="">
-          </div>
-          <div class="product-info">
-            <h1>{{ title }}</h1>
-            <p> {{ description }} </p>
-            <b><p v-if="onSale">{{saleMsg}}</p></b>
-            <p v-if="inStock > 10">In Stock </p>
-            <p v-if="almostSoldOut">Almost Sold Out, 
-              only {{ variants[selectedVariant].quantity }} left</p>
-            <p v-if="!inStock">Out of Stock</p>
-            
-            <ul>
-              <li v-for="detail in details">
-                {{ detail }}
-              </li>
-            </ul>
 
-            <ul>
-              <li v-for="(size, index) in sizes" 
-                :key="index">
-                  {{ size }}
-              </li>
-            </ul>
-
-            <div class="color-circle" 
-              v-for="(variant, index) in variants" 
-              :key="variant.id" 
-              :style="{ backgroundColor: variant.color }"
-              @mouseover="updateVariant(index)">
-            </div>
-
-            <button class="button" 
-              :class="{disabledButton: !inStock}"
-              :disabled="!inStock"
-              @click="addToCart">
-                {{ inStock ? "Add to Cart" : "Out of Stock" }}
-              </button>
-
-            <button class="button" 
-              @click="removeFromCart" 
-              v-if="cartIsFilled">
-                Remove from Cart
-              </button>
-           
-            <a :href="url">Made by Pinho Santiago</a>
-
-          </div>
-        </div>
-      </div>
+      
      
     </div>
 
     <!-- Import Js -->
     <script src="./main.js"></script>
+
+    <!-- Import Product Display Component-->
+    <script src="./components/ProductDisplay.js"></script>
+
+    <script src="./components/ProductDetails.js"></script>
+
 
     <script>
       const mountedApp = app.mount('#app')
