@@ -57,6 +57,8 @@ app.component('product-display', {
 
       </div>
     </div>
+    <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+    <review-form @review-submitted="addReview"></review-form>
   </div>`
   ,
   data(){
@@ -69,6 +71,7 @@ app.component('product-display', {
       url: 'https://www.github.com/tiagopinhotx',
       onSale: true,
       details: ['50% cotton', '30% wool', '20% polyester'],
+      reviews: [],
       variants: [
           { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
           { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 2 },
@@ -81,6 +84,9 @@ app.component('product-display', {
     addToCart(){
       this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
     }, 
+    addReview(review) {
+      this.reviews.push(review)
+    },
     removeFromCart(){
         this.$emit('remove-from-cart')
       },
